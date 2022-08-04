@@ -4,6 +4,26 @@ svg.attr("height", 40 * data.length).attr("width", 960);
 
 const scoreScale = d3.scaleLinear().domain([0, 100]).range([420, 900]);
 
+const imdbLine = d3
+	.line()
+	.x((d) => scoreScale(d.imdb))
+	.y((_, i) => 40 * i + 20);
+const imdbPath = svg
+	.append("path")
+	.datum(data)
+	.attr("d", imdbLine)
+	.attr("class", "imdb");
+
+const metascoreLine = d3
+	.line()
+	.x((d) => scoreScale(d.metascore))
+	.y((_, i) => 40 * i + 20);
+const metascorePath = svg
+	.append("path")
+	.datum(data)
+	.attr("d", metascoreLine)
+	.attr("class", "metascore");
+
 const groups = svg
 	.selectAll("g.movie")
 	.data(data)
@@ -61,9 +81,21 @@ selectTag.addEventListener("change", (event) => {
 			return d3.descending(a.metascore, b.metascore);
 		}
 	});
+
 	groups
 		.data(data, (d) => d.title)
 		.transition()
 		.duration(1000)
 		.attr("transform", (_, i) => `translate(0, ${i * 40})`);
+
+	imdbPath
+		.datum(data, (d) => d.title)
+		.transition()
+		.duration(1000)
+		.attr("d", imdbLine);
+  metascorePath
+		.datum(data, (d) => d.title)
+		.transition()
+		.duration(1000)
+		.attr("d", metascoreLine);
 });

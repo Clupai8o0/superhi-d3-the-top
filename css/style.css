@@ -68,3 +68,15 @@ g.movie:hover rect.background {
 g.movie {
   cursor: pointer;
 }
+
+path.imdb {
+  fill: none;
+  stroke: var(--imdb);
+  stroke-width: 5px;
+}
+
+path.metascore {
+  fill: none;
+  stroke: var(--metascore);
+  stroke-width: 5px;
+}
