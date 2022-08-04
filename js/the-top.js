@@ -39,3 +39,13 @@ groups
 	.attr("cy", 20)
 	.attr("r", 8)
 	.attr("class", "imdb");
+
+const selectTag = document.querySelector("select");
+selectTag.addEventListener("change", () => {
+	data.sort((a, b) => d3.descending(a.metascore, b.metascore));
+	groups
+		.data(data, (d) => d.title)
+		.transition()
+		.duration(1000)
+		.attr("transform", (_, i) => `translate(0, ${i * 40})`);
+});
