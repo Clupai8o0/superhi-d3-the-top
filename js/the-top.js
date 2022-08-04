@@ -41,8 +41,16 @@ groups
 	.attr("class", "imdb");
 
 const selectTag = document.querySelector("select");
-selectTag.addEventListener("change", () => {
-	data.sort((a, b) => d3.descending(a.metascore, b.metascore));
+selectTag.addEventListener("change", (event) => {
+	data.sort((a, b) => {
+		if (event.target.value === "imdb") {
+			return d3.descending(a.imdb, b.imdb);
+		} else if (event.target.value === "year") {
+			return d3.ascending(a.year, b.year);
+		} else {
+			return d3.descending(a.metascore, b.metascore);
+		}
+	});
 	groups
 		.data(data, (d) => d.title)
 		.transition()
