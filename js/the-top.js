@@ -4,11 +4,25 @@ svg.attr("height", 40 * data.length).attr("width", 960);
 
 const scoreScale = d3.scaleLinear().domain([0, 100]).range([420, 900]);
 
+const area = d3
+	.area()
+	.x0((d) => scoreScale(d.imdb))
+	.x1((d) => scoreScale(d.metascore))
+	.y0((_, i) => 40 * i + 20)
+	.y1((_, i) => 40 * i + 20)
+	.curve(d3.curveCardinal.tension(0.5));
+
+const areaPath = svg
+	.append("path")
+	.datum(data)
+	.attr("d", area)
+	.attr("class", "area");
+
 const imdbLine = d3
 	.line()
 	.x((d) => scoreScale(d.imdb))
 	.y((_, i) => 40 * i + 20)
-	.curve(d3.curveCardinal.tension(0.25));
+	.curve(d3.curveCardinal.tension(0.5));
 const imdbPath = svg
 	.append("path")
 	.datum(data)
@@ -100,4 +114,10 @@ selectTag.addEventListener("change", (event) => {
 		.transition()
 		.duration(1000)
 		.attr("d", metascoreLine);
+
+	areaPath
+		.datum(data, (d) => d.title)
+		.transition()
+		.duration(1000)
+		.attr("d", area);
 });
