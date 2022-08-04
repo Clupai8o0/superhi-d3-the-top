@@ -1,5 +1,11 @@
 const svg = d3.select("svg");
 
+// difference
+data = data.map((d) => {
+	d.difference = d.imdb - d.metascore;
+	return d;
+});
+
 svg.attr("height", 40 * data.length).attr("width", 960);
 
 const scoreScale = d3.scaleLinear().domain([0, 100]).range([420, 900]);
@@ -93,6 +99,8 @@ selectTag.addEventListener("change", (event) => {
 			return d3.ascending(a.year, b.year);
 		} else if (event.target.value === "title") {
 			return d3.ascending(a.title, b.title);
+		} else if (event.target.value === "difference") {
+			return d3.descending(a.difference, b.difference);
 		} else {
 			return d3.descending(a.metascore, b.metascore);
 		}
