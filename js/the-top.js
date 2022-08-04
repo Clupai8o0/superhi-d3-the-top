@@ -47,6 +47,8 @@ selectTag.addEventListener("change", (event) => {
 			return d3.descending(a.imdb, b.imdb);
 		} else if (event.target.value === "year") {
 			return d3.ascending(a.year, b.year);
+		} else if (event.target.value === "title") {
+			return d3.ascending(a.title, b.title);
 		} else {
 			return d3.descending(a.metascore, b.metascore);
 		}
