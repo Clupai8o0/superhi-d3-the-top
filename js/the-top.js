@@ -7,7 +7,8 @@ const scoreScale = d3.scaleLinear().domain([0, 100]).range([420, 900]);
 const imdbLine = d3
 	.line()
 	.x((d) => scoreScale(d.imdb))
-	.y((_, i) => 40 * i + 20);
+	.y((_, i) => 40 * i + 20)
+	.curve(d3.curveCardinal.tension(0.25));
 const imdbPath = svg
 	.append("path")
 	.datum(data)
@@ -17,7 +18,8 @@ const imdbPath = svg
 const metascoreLine = d3
 	.line()
 	.x((d) => scoreScale(d.metascore))
-	.y((_, i) => 40 * i + 20);
+	.y((_, i) => 40 * i + 20)
+	.curve(d3.curveCardinal.tension(0.25));
 const metascorePath = svg
 	.append("path")
 	.datum(data)
@@ -93,7 +95,7 @@ selectTag.addEventListener("change", (event) => {
 		.transition()
 		.duration(1000)
 		.attr("d", imdbLine);
-  metascorePath
+	metascorePath
 		.datum(data, (d) => d.title)
 		.transition()
 		.duration(1000)
