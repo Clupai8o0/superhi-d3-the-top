@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Space+Mono:400,700");
+
+:root {
+	--background: #ffffd0;
+	--text-color: #111118;
+	--imdb: #e4160d;
+	--metascore: #177a7d;
+	--highlight: rgba(0, 0, 0, 0.05);
+}
+
+body {
+	font-family: Space Mono, "Courier New", Courier, monospace;
+	font-size: 18px;
+	line-height: 1.5;
+
+  background: var(--background);
+  color: var(--text-color);
+}

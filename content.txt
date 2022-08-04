@@ -1,0 +1,17 @@
+Typography:
+Space Mono
+
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700');
+
+Font sizes: 18px
+Page width: 960px
+
+Colors:
+Background: #ffffd0
+Black: #111118
+IMDB: #e4160d
+Metascore: #177a7d
+Highlight: Black at 5% opacity, aka rgba(0, 0, 0, 0.05)
+
+
+
