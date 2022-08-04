@@ -6,7 +6,7 @@ data = data.map((d) => {
 	return d;
 });
 
-svg.attr("height", 40 * data.length).attr("width", 960);
+svg.attr("height", 40 * data.length).attr("width", "100%");
 
 const scoreScale = d3.scaleLinear().domain([0, 100]).range([420, 900]);
 
