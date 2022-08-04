@@ -84,3 +84,10 @@ path.metascore {
 path.area {
   fill: var(--highlight);
 }
+
+text.imdb {
+  fill: var(--imdb);
+}
+text.metascore {
+  fill: var(--metascore);
+}

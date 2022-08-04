@@ -90,6 +90,40 @@ groups
 	.attr("r", 8)
 	.attr("class", "imdb");
 
+groups
+	.append("text")
+	.attr("x", (d) => {
+		if (d.difference > 0) {
+			return scoreScale(d.imdb) + 15;
+		} else {
+			return scoreScale(d.imdb) - 15;
+		}
+	})
+	.attr("y", 20)
+	.text((d) => d.imdb)
+	.attr("class", "imdb")
+	.style("text-anchor", (d) => {
+		if (d.difference > 0) return "start";
+		else return "end";
+	});
+
+groups
+	.append("text")
+	.attr("x", (d) => {
+		if (d.difference > 0) {
+			return scoreScale(d.metascore) - 15;
+		} else {
+			return scoreScale(d.metascore) + 15;
+		}
+	})
+	.attr("y", 20)
+	.text((d) => d.metascore)
+	.attr("class", "metascore")
+	.style("text-anchor", (d) => {
+		if (d.difference > 0) return "end";
+		else return "start";
+	});
+
 const selectTag = document.querySelector("select");
 selectTag.addEventListener("change", (event) => {
 	data.sort((a, b) => {
