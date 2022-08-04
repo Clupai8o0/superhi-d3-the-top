@@ -163,3 +163,24 @@ selectTag.addEventListener("change", (event) => {
 		.duration(1000)
 		.attr("d", area);
 });
+
+const resize = () => {
+	const svgTag = document.querySelector("svg");
+	const svgWidth = svgTag.clientWidth;
+
+	scoreScale.range([(420 / 960) * svgWidth, 900]);
+	groups
+		.selectAll("circle.metascore")
+		.attr("cx", (d) => scoreScale(d.metascore));
+	groups.selectAll("circle.imdb").attr("cx", (d) => scoreScale(d.imdb));
+	groups.selectAll("text.title").attr("x", svgWidth >= 960 ? 90 : 70);
+  metascoreLine.x(d => scoreScale(d.metascore));
+  imdbLine.x((d) => scoreScale(d.imdb));
+  metascorePath.attr("d", metascoreLine);
+  imdbPath.attr("d", imdbLine);
+};
+
+resize();
+window.addEventListener("resize", () => {
+	resize();
+});

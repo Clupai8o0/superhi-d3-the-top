@@ -97,6 +97,10 @@ text.metascore {
     font-size: 14px;
     width: auto;
   }
+
+  text.imdb, text.metascore {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
