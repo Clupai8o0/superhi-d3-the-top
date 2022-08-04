@@ -21,6 +21,7 @@ body {
 
 header {
 	padding: 24px;
+  background: var(--background);
 	border-bottom: 3px solid var(--text-color);
 
 	display: flex;
@@ -39,4 +40,13 @@ span.imdb {
 }
 span.metascore {
   color: var(--metascore);
+}
+
+text {
+  dominant-baseline: middle;
+  width: 600px;
+}
+
+text.title {
+  font-weight: 700;
 }
