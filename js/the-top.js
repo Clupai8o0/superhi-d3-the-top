@@ -13,6 +13,14 @@ const groups = svg
 	.attr("transform", (_, i) => `translate(0, ${i * 40})`);
 
 groups
+	.append("rect")
+	.attr("x", 0)
+	.attr("y", 0)
+	.attr("width", 960)
+	.attr("height", 40)
+	.attr("class", "background");
+
+groups
 	.append("text")
 	.attr("x", 90)
 	.attr("y", 20)

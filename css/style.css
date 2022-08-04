@@ -21,15 +21,15 @@ body {
 
 header {
 	padding: 24px;
-  background: var(--background);
+	background: var(--background);
 	border-bottom: 3px solid var(--text-color);
 
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-  position: sticky;
-  top: 0;
+	position: sticky;
+	top: 0;
 }
 
 span {
@@ -39,21 +39,32 @@ span.imdb {
 	color: var(--imdb);
 }
 span.metascore {
-  color: var(--metascore);
+	color: var(--metascore);
 }
 
 text {
-  dominant-baseline: middle;
-  width: 600px;
+	dominant-baseline: middle;
+	width: 600px;
 }
 
 text.title {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 circle.imdb {
-  fill: var(--imdb);
+	fill: var(--imdb);
 }
 circle.metascore {
-  fill: var(--metascore);
+	fill: var(--metascore);
+}
+
+rect.background {
+	fill: var(--highlight);
+	opacity: 0;
+}
+g.movie:hover rect.background {
+	opacity: 1;
+}
+g.movie {
+  cursor: pointer;
 }
